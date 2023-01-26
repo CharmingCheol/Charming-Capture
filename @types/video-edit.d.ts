@@ -32,4 +32,6 @@ abstract class Module implements OnInit, OnDestroy {
   abstract destroy(): void;
 }
 
-interface Engine extends ModuleRegistry, OnInit, OnDestroy {}
+interface Engine extends OnInit, OnDestroy {
+  moduleRegistry: ModuleRegistry;
+}
