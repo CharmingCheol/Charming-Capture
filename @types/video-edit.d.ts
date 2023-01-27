@@ -1,3 +1,11 @@
+abstract class VideoEditModule implements OnInit, OnDestroy {
+  constructor(protected modules: VideoEditModules) {}
+
+  abstract init(): void;
+
+  abstract destroy(): void;
+}
+
 interface Animator {
   play(): void;
 
@@ -24,14 +32,6 @@ interface VideoEditModules {
   timeController: TimeController;
 }
 
-abstract class VideoEditModule implements OnInit, OnDestroy {
-  constructor(protected modules: VideoEditModules) {}
-
-  abstract init(): void;
-
-  abstract destroy(): void;
-}
-
-interface Engine extends OnInit, OnDestroy {
+interface VideoEditEngineVariables {
   modules: VideoEditModules;
 }

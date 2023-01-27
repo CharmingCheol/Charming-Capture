@@ -2,7 +2,7 @@ import VideoEditAnimator from "./modules/VideoEditAnimator";
 import VideoEditDownloader from "./modules/VideoEditDownloader";
 import VideoEditTimeController from "./modules/VideoEditTimeController";
 
-class VideoEditEngine implements Engine {
+class VideoEditEngine implements OnInit, OnDestroy, VideoEditEngineVariables {
   public modules = {} as VideoEditModules;
 
   public init(): void {
