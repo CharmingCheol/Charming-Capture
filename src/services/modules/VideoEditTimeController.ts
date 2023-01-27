@@ -1,4 +1,4 @@
-class VideoEditTimeController extends Module implements TimeController {
+class VideoEditTimeController extends VideoEditModule implements TimeController {
   public init(): void {
     throw new Error("Method not implemented.");
   }

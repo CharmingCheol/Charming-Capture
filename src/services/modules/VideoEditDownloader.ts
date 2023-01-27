@@ -1,4 +1,4 @@
-class VideoEditDownloader extends Module implements Downloader {
+class VideoEditDownloader extends VideoEditModule implements Downloader {
   public init(): void {
     throw new Error("Method not implemented.");
   }

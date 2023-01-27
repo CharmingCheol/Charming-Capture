@@ -1,4 +1,4 @@
-class VideoEditAnimator extends Module implements Animator {
+class VideoEditAnimator extends VideoEditModule implements Animator {
   public init(): void {
     throw new Error("Method not implemented.");
   }

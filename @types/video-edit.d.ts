@@ -24,7 +24,7 @@ interface ModuleRegistry {
   timeController: TimeController;
 }
 
-abstract class Module implements OnInit, OnDestroy {
+abstract class VideoEditModule implements OnInit, OnDestroy {
   constructor(protected moduleRegistry: ModuleRegistry) {}
 
   abstract init(): void;

@@ -12,7 +12,7 @@ class VideoEditEngine implements Engine {
     }
   }
 
-  private initModuleRegistry(): Module[] {
+  private initModuleRegistry(): VideoEditModule[] {
     this.moduleRegistry = {
       animator: new VideoEditAnimator(this.moduleRegistry),
       downloader: new VideoEditDownloader(this.moduleRegistry),
@@ -22,7 +22,7 @@ class VideoEditEngine implements Engine {
   }
 
   public destroy(): void {
-    const moduleRegistry: Module[] = Object.values(this.moduleRegistry);
+    const moduleRegistry: VideoEditModule[] = Object.values(this.moduleRegistry);
     for (const registry of moduleRegistry) {
       registry.destroy();
     }
