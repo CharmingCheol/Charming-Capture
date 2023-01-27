@@ -16,7 +16,7 @@ interface TimeController {
   range(): void;
 }
 
-interface ModuleRegistry {
+interface VideoEditModules {
   animator: Animator;
 
   downloader: Downloader;
@@ -25,7 +25,7 @@ interface ModuleRegistry {
 }
 
 abstract class VideoEditModule implements OnInit, OnDestroy {
-  constructor(protected moduleRegistry: ModuleRegistry) {}
+  constructor(protected modules: VideoEditModules) {}
 
   abstract init(): void;
 
@@ -33,5 +33,5 @@ abstract class VideoEditModule implements OnInit, OnDestroy {
 }
 
 interface Engine extends OnInit, OnDestroy {
-  moduleRegistry: ModuleRegistry;
+  modules: VideoEditModules;
 }

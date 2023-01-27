@@ -3,28 +3,28 @@ import VideoEditDownloader from "./modules/VideoEditDownloader";
 import VideoEditTimeController from "./modules/VideoEditTimeController";
 
 class VideoEditEngine implements Engine {
-  public moduleRegistry = {} as ModuleRegistry;
+  public modules = {} as VideoEditModules;
 
   public init(): void {
-    const moduleRegistry = this.initModuleRegistry();
-    for (const registry of moduleRegistry) {
-      registry.init();
+    const modules = this.initVideoEditModules();
+    for (const _module of modules) {
+      _module.init();
     }
   }
 
-  private initModuleRegistry(): VideoEditModule[] {
-    this.moduleRegistry = {
-      animator: new VideoEditAnimator(this.moduleRegistry),
-      downloader: new VideoEditDownloader(this.moduleRegistry),
-      timeController: new VideoEditTimeController(this.moduleRegistry),
+  private initVideoEditModules(): VideoEditModule[] {
+    this.modules = {
+      animator: new VideoEditAnimator(this.modules),
+      downloader: new VideoEditDownloader(this.modules),
+      timeController: new VideoEditTimeController(this.modules),
     };
-    return Object.values(this.moduleRegistry);
+    return Object.values(this.modules);
   }
 
   public destroy(): void {
-    const moduleRegistry: VideoEditModule[] = Object.values(this.moduleRegistry);
-    for (const registry of moduleRegistry) {
-      registry.destroy();
+    const modules: VideoEditModule[] = Object.values(this.modules);
+    for (const _module of modules) {
+      _module.destroy();
     }
   }
 }
