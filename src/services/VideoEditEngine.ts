@@ -5,19 +5,20 @@ import VideoEditTimeController from "./modules/VideoEditTimeController";
 class VideoEditEngine implements Engine {
   public moduleRegistry = {} as ModuleRegistry;
 
-  constructor() {
+  public init(): void {
+    const moduleRegistry = this.initModuleRegistry();
+    for (const registry of moduleRegistry) {
+      registry.init();
+    }
+  }
+
+  private initModuleRegistry(): Module[] {
     this.moduleRegistry = {
       animator: new VideoEditAnimator(this.moduleRegistry),
       downloader: new VideoEditDownloader(this.moduleRegistry),
       timeController: new VideoEditTimeController(this.moduleRegistry),
     };
-  }
-
-  public init(): void {
-    const moduleRegistry: Module[] = Object.values(this.moduleRegistry);
-    for (const registry of moduleRegistry) {
-      registry.init();
-    }
+    return Object.values(this.moduleRegistry);
   }
 
   public destroy(): void {
