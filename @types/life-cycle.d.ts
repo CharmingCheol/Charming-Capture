@@ -1,9 +1,9 @@
 interface OnInit {
-  init(): void;
+  init(...args: any[]): void;
 }
 
 interface AsyncOnInit {
-  init(): Promise<void>;
+  init(...args: any[]): Promise<void>;
 }
 
 interface OnDestroy {
