@@ -1,5 +1,5 @@
 abstract class VideoEditModule implements OnInit, OnDestroy {
-  constructor(protected modules: VideoEditModules) {}
+  constructor(protected video: HTMLVideoElement, protected modules: VideoEditModules) {}
 
   abstract init(): void;
 
@@ -30,8 +30,4 @@ interface VideoEditModules {
   downloader: Downloader;
 
   timeController: TimeController;
-}
-
-interface VideoEditEngineVariables {
-  modules: VideoEditModules;
 }

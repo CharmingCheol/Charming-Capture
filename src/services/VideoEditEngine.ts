@@ -2,21 +2,23 @@ import VideoEditAnimator from "./modules/VideoEditAnimator";
 import VideoEditDownloader from "./modules/VideoEditDownloader";
 import VideoEditTimeController from "./modules/VideoEditTimeController";
 
-class VideoEditEngine implements OnInit, OnDestroy, VideoEditEngineVariables {
-  public modules = {} as VideoEditModules;
+class VideoEditEngine implements OnInit, OnDestroy {
+  public modules!: VideoEditModules;
+  private _video!: HTMLVideoElement;
 
-  public init(): void {
-    const modules = this.initVideoEditModules();
+  public init(video: HTMLVideoElement): void {
+    this._video = video;
+    const modules = this.initModules();
     for (const _module of modules) {
       _module.init();
     }
   }
 
-  private initVideoEditModules(): VideoEditModule[] {
+  private initModules(): VideoEditModule[] {
     this.modules = {
-      animator: new VideoEditAnimator(this.modules),
-      downloader: new VideoEditDownloader(this.modules),
-      timeController: new VideoEditTimeController(this.modules),
+      animator: new VideoEditAnimator(this._video, this.modules),
+      downloader: new VideoEditDownloader(this._video, this.modules),
+      timeController: new VideoEditTimeController(this._video, this.modules),
     };
     return Object.values(this.modules);
   }
