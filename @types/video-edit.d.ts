@@ -19,9 +19,13 @@ interface Downloader {
 }
 
 interface TimeController {
-  toSec(): void;
+  currentTime: number;
 
-  range(): void;
+  loopRange: LoopRange;
+
+  clamp(loopRange: Partial<LoopRange>): LoopRange;
+
+  moveTo(currentTime: number): number;
 }
 
 interface VideoEditModulePackage {
