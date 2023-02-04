@@ -1,3 +1,5 @@
+import VideoEditModule from "./index";
+
 class VideoEditDownloader extends VideoEditModule implements Downloader {
   public init(): void {
     throw new Error("Method not implemented.");

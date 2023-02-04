@@ -1,3 +1,5 @@
+import VideoEditModule from "./index";
+
 class VideoEditAnimator extends VideoEditModule implements Animator {
   public init(): void {}
 

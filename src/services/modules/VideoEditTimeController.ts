@@ -1,3 +1,5 @@
+import VideoEditModule from "./index";
+
 class VideoEditTimeController extends VideoEditModule implements TimeController {
   private _currentTime!: number;
   get currentTime(): number {

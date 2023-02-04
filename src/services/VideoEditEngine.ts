@@ -1,3 +1,4 @@
+import VideoEditModule from "./modules";
 import VideoEditAnimator from "./modules/VideoEditAnimator";
 import VideoEditDownloader from "./modules/VideoEditDownloader";
 import VideoEditTimeController from "./modules/VideoEditTimeController";
