@@ -1,5 +1,13 @@
 import type { AppProps } from "next/app";
+import StyleReset from "@/styles/StyleReset";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <StyleReset />
+      <Component {...pageProps} />
+    </>
+  );
 }
+
+export default App;
