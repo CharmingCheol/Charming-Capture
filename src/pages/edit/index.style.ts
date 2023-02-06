@@ -1,3 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;

@@ -1,5 +1,7 @@
+import * as S from "./index.style";
+
 const ToolBarHeader = () => {
-  return <header></header>;
+  return <S.Header></S.Header>;
 };
 
 export default ToolBarHeader;
