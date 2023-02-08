@@ -5,3 +5,5 @@ export const Page = styled.div`
   flex-direction: column;
   height: 100%;
 `;
+
+export const Footer = styled.footer``;

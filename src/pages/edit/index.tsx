@@ -1,7 +1,10 @@
 import React from "react";
+
 import ToolBarHeader from "./ToolBarHeader";
 import VideoPlayPanel from "./VideoPlayPanel";
+import MiddleBar from "./MiddleBar";
 import TimelinePanel from "./TimelinePanel";
+
 import * as S from "./index.style";
 
 const EditPage = () => {
@@ -9,7 +12,10 @@ const EditPage = () => {
     <S.Page>
       <ToolBarHeader />
       <VideoPlayPanel />
-      <TimelinePanel />
+      <S.Footer>
+        <MiddleBar />
+        <TimelinePanel />
+      </S.Footer>
     </S.Page>
   );
 };
