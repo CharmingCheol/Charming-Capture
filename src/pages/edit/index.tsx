@@ -2,8 +2,7 @@ import React from "react";
 
 import ToolBarHeader from "./ToolBarHeader";
 import VideoPlayPanel from "./VideoPlayPanel";
-import MiddleBar from "./MiddleBar";
-import TimelinePanel from "./TimelinePanel";
+import VideoTimelineFooter from "./VideoTimelineFooter";
 
 import * as S from "./index.style";
 
@@ -12,10 +11,7 @@ const EditPage = () => {
     <S.Page>
       <ToolBarHeader />
       <VideoPlayPanel />
-      <S.Footer>
-        <MiddleBar />
-        <TimelinePanel />
-      </S.Footer>
+      <VideoTimelineFooter />
     </S.Page>
   );
 };

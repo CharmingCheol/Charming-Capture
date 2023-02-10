@@ -6,5 +6,3 @@ export const Page = styled.div`
   height: 100%;
   overflow: hidden;
 `;
-
-export const Footer = styled.footer``;
