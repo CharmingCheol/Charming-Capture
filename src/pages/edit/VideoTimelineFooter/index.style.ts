@@ -6,7 +6,7 @@ export const Footer = styled.footer`
   .drag-area {
     position: absolute;
     width: 100%;
-    height: 4px;
+    height: 16px;
     opacity: 0;
     cursor: row-resize;
   }
