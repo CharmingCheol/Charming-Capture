@@ -1,7 +1,13 @@
 import VideoEditModule from "./index";
 
 class VideoEditDownloader extends VideoEditModule implements Downloader {
-  public init(): void {}
+  protected video!: HTMLVideoElement;
+  protected modulePackage!: VideoEditModulePackage;
+
+  public init(video: HTMLVideoElement, modulePackage: VideoEditModulePackage): void {
+    this.video = video;
+    this.modulePackage = modulePackage;
+  }
 
   public destroy(): void {}
 

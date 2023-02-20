@@ -1,17 +1,15 @@
 import VideoEditModule from "./index";
 
 class VideoEditTimeController extends VideoEditModule implements TimeController {
+  protected video!: HTMLVideoElement;
+  protected modulePackage!: VideoEditModulePackage;
+
   private _currentTime!: number;
-  get currentTime(): number {
-    return this._currentTime;
-  }
-
   private _loopRange!: LoopRange;
-  get loopRange(): LoopRange {
-    return { ...this._loopRange };
-  }
 
-  public init(): void {
+  public init(video: HTMLVideoElement, modulePackage: VideoEditModulePackage): void {
+    this.video = video;
+    this.modulePackage = modulePackage;
     this._currentTime = 0;
     this._loopRange = { start: 0, end: this.video.duration };
   }
