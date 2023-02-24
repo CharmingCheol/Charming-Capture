@@ -16,9 +16,9 @@ class VideoEditAnimator extends VideoEditModule implements Animator {
     this.video.addEventListener("timeupdate", this.handleTimeUpdateEvent);
   }
 
-  private handleTimeUpdateEvent(event: any): void {
+  private handleTimeUpdateEvent = (event: any): void => {
     this.modulePackage.timeController.exceed(event.target.currentTime);
-  }
+  };
 
   public pause(): void {
     this.video.pause();
