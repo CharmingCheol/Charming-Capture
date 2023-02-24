@@ -42,6 +42,12 @@ class VideoEditTimeController extends VideoEditModule implements TimeController 
     this.video.currentTime = this._currentTime;
     return this._currentTime;
   }
+
+  public exceed(time: number): void {
+    if (this._loopRange.end <= time) {
+      this.modulePackage.animator.stop();
+    }
+  }
 }
 
 export default VideoEditTimeController;

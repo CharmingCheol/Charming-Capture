@@ -13,19 +13,16 @@ class VideoEditAnimator extends VideoEditModule implements Animator {
 
   public play(): void {
     this.video.play();
-    this.video.addEventListener("timeupdate", this.handleTimeUpdateEvent as any);
+    this.video.addEventListener("timeupdate", this.handleTimeUpdateEvent);
   }
 
   private handleTimeUpdateEvent(event: any): void {
-    if (this.modulePackage.timeController.loopRange.end <= event.target.currentTime) {
-      this.modulePackage.timeController.moveTo(0);
-      this.video.play();
-    }
+    this.modulePackage.timeController.exceed(event.target.currentTime);
   }
 
   public pause(): void {
     this.video.pause();
-    this.video.removeEventListener("timeupdate", this.handleTimeUpdateEvent as any);
+    this.video.removeEventListener("timeupdate", this.handleTimeUpdateEvent);
   }
 
   public stop(): void {

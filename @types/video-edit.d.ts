@@ -11,13 +11,11 @@ interface Downloader {
 }
 
 interface TimeController {
-  currentTime: number;
-
-  loopRange: LoopRange;
-
   clamp(loopRange: Partial<LoopRange>): LoopRange;
 
-  moveTo(currentTime: number): number;
+  moveTo(time: number): number;
+
+  exceed(time: number): void;
 }
 
 interface VideoEditModulePackage {
