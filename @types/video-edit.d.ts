@@ -11,7 +11,7 @@ interface Downloader {
 }
 
 interface TimeController {
-  clamp(loopRange: Partial<LoopRange>): LoopRange;
+  rescale(loopRange: Partial<LoopRange>): LoopRange;
 
   moveTo(time: number): number;
 

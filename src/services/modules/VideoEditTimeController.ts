@@ -4,14 +4,13 @@ class VideoEditTimeController extends VideoEditModule implements TimeController 
   protected video!: HTMLVideoElement;
   protected modulePackage!: VideoEditModulePackage;
 
-  private _currentTime!: number;
-  private _loopRange!: LoopRange;
+  private _currentTime: number = 0;
+  private _loopRange: LoopRange = { start: 0, end: 0 };
 
   public init(video: HTMLVideoElement, modulePackage: VideoEditModulePackage): void {
     this.video = video;
     this.modulePackage = modulePackage;
-    this._currentTime = 0;
-    this._loopRange = { start: 0, end: this.video.duration };
+    this._loopRange = { start: 0, end: video.duration };
   }
 
   public destroy(): void {
@@ -19,8 +18,8 @@ class VideoEditTimeController extends VideoEditModule implements TimeController 
     this._loopRange = { start: 0, end: 0 };
   }
 
-  public clamp(loopRange: Partial<LoopRange>): LoopRange {
-    this._loopRange = { ...this._loopRange, ...loopRange };
+  public rescale(range: Partial<LoopRange>): LoopRange {
+    this._loopRange = { ...this._loopRange, ...range };
     if (this._loopRange.start < 0) {
       this._loopRange.start = 0;
     }
