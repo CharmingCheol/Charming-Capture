@@ -1,16 +1,24 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
-type ContextApiParams = typeof initialState & {
-  setState: React.Dispatch<React.SetStateAction<typeof initialState>>;
+type ContextApiParams = typeof initialState & { actions: actions };
+
+type actions = {
+  setIsPlaying: (args: Pick<typeof initialState, "isPlaying">) => void;
 };
 
 const initialState = { isPlaying: false };
 
-const EditPageContext = createContext<ContextApiParams>({ ...initialState, setState: () => {} });
+const EditPageContext = createContext<ContextApiParams>({} as any);
 
 const EditPageProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, setState] = useState(initialState);
-  const value = useMemo(() => ({ ...state, setState }), [state]);
+
+  const actions: actions = {
+    setIsPlaying: (payload) => setState((state) => ({ ...state, ...payload })),
+  };
+
+  const value = useMemo<ContextApiParams>(() => ({ ...state, actions }), [state]);
+
   return <EditPageContext.Provider value={value}>{children}</EditPageContext.Provider>;
 };
 
