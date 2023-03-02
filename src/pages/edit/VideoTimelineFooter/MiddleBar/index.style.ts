@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { BsFillPauseFill, BsFillPlayFill, BsFillStopFill } from "react-icons/bs";
 
 export const Section = styled.section`
   display: flex;
