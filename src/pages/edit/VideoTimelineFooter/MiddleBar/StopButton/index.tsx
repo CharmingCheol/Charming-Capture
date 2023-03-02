@@ -6,12 +6,12 @@ import * as S from "./index.style";
 const StopButton = () => {
   const { actions } = useEditPageContext();
 
-  const handleClick = () => {
+  const click = () => {
     videoEditEngine.modulePackage.animator.stop();
     actions.setIsPlaying({ isPlaying: false });
   };
 
-  return <S.StopButton onClick={handleClick} />;
+  return <S.StopButton onClick={click} />;
 };
 
 export default StopButton;

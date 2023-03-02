@@ -6,12 +6,12 @@ import * as S from "./index.style";
 const PlayButton = () => {
   const { actions } = useEditPageContext();
 
-  const handleClick = () => {
+  const click = () => {
     videoEditEngine.modulePackage.animator.play();
     actions.setIsPlaying({ isPlaying: true });
   };
 
-  return <S.PlayButton onClick={handleClick} />;
+  return <S.PlayButton onClick={click} />;
 };
 
 export default PlayButton;
