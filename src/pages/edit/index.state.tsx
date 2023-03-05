@@ -3,7 +3,8 @@ import { createContext, useContext, useMemo, useState } from "react";
 type ContextApiParams = typeof initialState & { actions: actions };
 
 type actions = {
-  setIsPlaying: (args: Pick<typeof initialState, "isPlaying">) => void;
+  playVideo: () => void;
+  stopVideo: () => void;
 };
 
 const initialState = { isPlaying: false };
@@ -14,7 +15,8 @@ const EditPageProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, setState] = useState(initialState);
 
   const actions: actions = {
-    setIsPlaying: (payload) => setState((state) => ({ ...state, ...payload })),
+    playVideo: () => setState((state) => ({ ...state, isPlaying: true })),
+    stopVideo: () => setState((state) => ({ ...state, isPlaying: false })),
   };
 
   const value = useMemo<ContextApiParams>(() => ({ ...state, actions }), [state]);

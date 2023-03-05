@@ -8,7 +8,7 @@ const PlayButton = () => {
 
   const click = () => {
     videoEditEngine.modulePackage.animator.play();
-    actions.setIsPlaying({ isPlaying: true });
+    actions.playVideo();
   };
 
   return <S.PlayButton onClick={click} />;

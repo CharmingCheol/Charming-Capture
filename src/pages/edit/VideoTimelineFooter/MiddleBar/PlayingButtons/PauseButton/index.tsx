@@ -8,7 +8,7 @@ const PauseButton = () => {
 
   const click = () => {
     videoEditEngine.modulePackage.animator.pause();
-    actions.setIsPlaying({ isPlaying: false });
+    actions.stopVideo();
   };
 
   return <S.PauseButton onClick={click} />;
