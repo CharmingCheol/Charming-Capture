@@ -15,7 +15,7 @@ interface TimeController {
 
   moveTo(time: number): number;
 
-  exceed(time: number): void;
+  isPlayEnded(time: number): boolean;
 }
 
 interface VideoEditModulePackage {
