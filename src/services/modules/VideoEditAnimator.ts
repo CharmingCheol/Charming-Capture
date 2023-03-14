@@ -2,11 +2,13 @@ import VideoEditModule from "./index";
 
 class VideoEditAnimator extends VideoEditModule implements Animator {
   protected video!: HTMLVideoElement;
-  protected modulePackage!: VideoEditModulePackage;
 
-  public init(video: HTMLVideoElement, modulePackage: VideoEditModulePackage): void {
+  constructor(private timeController: TimeController) {
+    super();
+  }
+
+  public init(video: HTMLVideoElement): void {
     this.video = video;
-    this.modulePackage = modulePackage;
   }
 
   public destroy(): void {}
@@ -17,7 +19,9 @@ class VideoEditAnimator extends VideoEditModule implements Animator {
   }
 
   private handleTimeUpdateEvent = (event: any): void => {
-    this.modulePackage.timeController.exceed(event.target.currentTime);
+    if (this.timeController.isPlayEnded(event.target.currentTime)) {
+      this.stop();
+    }
   };
 
   public pause(): void {
@@ -27,7 +31,7 @@ class VideoEditAnimator extends VideoEditModule implements Animator {
 
   public stop(): void {
     this.pause();
-    this.modulePackage.timeController.moveTo(0);
+    this.timeController.moveTo(0);
   }
 }
 

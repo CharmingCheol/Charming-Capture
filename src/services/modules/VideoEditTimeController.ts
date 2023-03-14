@@ -2,14 +2,15 @@ import VideoEditModule from "./index";
 
 class VideoEditTimeController extends VideoEditModule implements TimeController {
   protected video!: HTMLVideoElement;
-  protected modulePackage!: VideoEditModulePackage;
-
   private _currentTime: number = 0;
   private _loopRange: LoopRange = { start: 0, end: 0 };
 
-  public init(video: HTMLVideoElement, modulePackage: VideoEditModulePackage): void {
+  constructor() {
+    super();
+  }
+
+  public init(video: HTMLVideoElement): void {
     this.video = video;
-    this.modulePackage = modulePackage;
     this._loopRange = { start: 0, end: video.duration };
   }
 
@@ -42,10 +43,8 @@ class VideoEditTimeController extends VideoEditModule implements TimeController 
     return this._currentTime;
   }
 
-  public exceed(time: number): void {
-    if (this._loopRange.end <= time) {
-      this.modulePackage.animator.stop();
-    }
+  public isPlayEnded(time: number): boolean {
+    return this._loopRange.end <= time;
   }
 }
 

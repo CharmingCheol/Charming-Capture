@@ -1,8 +1,7 @@
 abstract class VideoEditModule implements OnInit, OnDestroy {
   protected abstract video: HTMLVideoElement;
-  protected abstract modulePackage: VideoEditModulePackage;
 
-  abstract init(video: HTMLVideoElement, modulePackage: VideoEditModulePackage): void;
+  abstract init(video: HTMLVideoElement): void;
 
   abstract destroy(): void;
 }
