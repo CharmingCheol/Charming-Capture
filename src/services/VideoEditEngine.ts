@@ -4,26 +4,30 @@ import VideoEditDownloader from "./modules/VideoEditDownloader";
 import VideoEditTimeController from "./modules/VideoEditTimeController";
 
 class VideoEditEngine implements OnInit, OnDestroy {
-  public modulePackage!: VideoEditModulePackage;
+  public animator!: Animator;
+  public downloader!: Downloader;
+  public timeController!: TimeController;
+
+  private modules: VideoEditModule[] = [];
 
   constructor() {
-    this.modulePackage = {
-      animator: new VideoEditAnimator(),
-      downloader: new VideoEditDownloader(),
-      timeController: new VideoEditTimeController(),
-    };
+    this.registerModules();
+  }
+
+  private registerModules() {
+    this.modules.push((this.timeController = new VideoEditTimeController()));
+    this.modules.push((this.downloader = new VideoEditDownloader()));
+    this.modules.push((this.animator = new VideoEditAnimator(this.timeController)));
   }
 
   public init(video: HTMLVideoElement): void {
-    const modules: VideoEditModule[] = Object.values(this.modulePackage);
-    for (const _module of modules) {
-      _module.init(video, this.modulePackage);
+    for (const _module of this.modules) {
+      _module.init(video);
     }
   }
 
   public destroy(): void {
-    const modules: VideoEditModule[] = Object.values(this.modulePackage);
-    for (const _module of modules) {
+    for (const _module of this.modules) {
       _module.destroy();
     }
   }
